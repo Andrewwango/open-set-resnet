@@ -8,5 +8,5 @@ uvicorn==0.14.0
 tqdm==4.59.0
 python-multipart==0.0.5
 streamlit==0.86.0
-torch==1.9.0+cpu
-torchvision==0.10.0+cpu
+https://download.pytorch.org/whl/cpu/torch-1.9.0-cp38-cp38-linux_aarch64.whl
+https://download.pytorch.org/whl/cpu/torchvision-0.8.1%2Bcpu-cp38-cp38-linux_x86_64.whl
