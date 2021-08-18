@@ -1,0 +1,3 @@
+api/test-set/
+training/training_data/
+**/model.pth
