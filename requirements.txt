@@ -1,8 +1,8 @@
 pydantic==1.8.2
-torchvision==0.8.2+cpu
+torchvision
 requests==2.25.1
 numpy==1.19.5
-torch==1.7.1+cpu
+torch
 matplotlib==3.3.3
 boto3==1.18.19
 fastapi==0.68.0
