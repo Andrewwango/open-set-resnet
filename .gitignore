@@ -1,5 +1,7 @@
 api/test-set/
 training/training_data/
+**/model.pth
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
