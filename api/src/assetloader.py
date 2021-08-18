@@ -1,4 +1,5 @@
-import tarfile, io, PIL, torch, os, json
+import tarfile, io, PIL, torch, os, json, gdown
+from gdown.download import download
 import torchvision.transforms as transforms
 
 """
@@ -10,6 +11,10 @@ def _full_path(path):
 
 with open(_full_path("classification.config")) as f:
     data = json.load(f)
+
+def download_from_drive(id, dest):
+    print("Downloading to", str(dest))
+    gdown.download('https://drive.google.com/uc?id='+str(id), dest, quiet=False)
 
 def get_model_names():
     return list(data["MODELS"].keys())
@@ -25,13 +30,19 @@ def get_species_model(store=None, model_name=None):
     if choose_store(store) == 's3':
         return _get_model(model_name)["S3_MODELS"]["S3_SPECIES_MODEL"]
     else:
-        return _full_path(_get_model(model_name)["LOCAL_MODELS"]["LOCAL_SPECIES_MODEL"])
+        path = _full_path(_get_model(model_name)["LOCAL_MODELS"]["LOCAL_SPECIES_MODEL"])
+        if not os.path.exists(path):
+            download_from_drive(_get_model(model_name)["DRIVE_MODELS"]["DRIVE_SPECIES_MODEL"], path)
+        return path 
 
 def get_breeds_model(store=None, model_name=None):
     if choose_store(store) == 's3':
         return _get_model(model_name)["S3_MODELS"]["S3_BREEDS_MODEL"]
     else:
-        return _full_path(_get_model(model_name)["LOCAL_MODELS"]["LOCAL_BREEDS_MODEL"])
+        path = _full_path(_get_model(model_name)["LOCAL_MODELS"]["LOCAL_BREEDS_MODEL"])
+        if not os.path.exists(path):
+            download_from_drive(_get_model(model_name)["DRIVE_MODELS"]["DRIVE_BREEDS_MODEL"], path)
+        return path 
 
 def get_bucket_name(store=None, model_name=None):
     if choose_store(store) == 's3':

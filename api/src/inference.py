@@ -1,6 +1,5 @@
 import torch, torchvision
 import torch.nn as nn
-import matplotlib.pyplot as plt
 from assetloader import *
 
 def get_label_breeds(prediction, model_name):
@@ -60,8 +59,8 @@ def classify_image(bucket=None, image_store=None, image_path=None, saved_weights
     
     confs = ['{}%'.format(round(conf.item()*100, 1)) for conf in confs[0]]
     
-    if display_image:
-        plt.imshow(original_image)
+    #if display_image:
+    #    plt.imshow(original_image)
 
     return None, confs, preds[0]
 
