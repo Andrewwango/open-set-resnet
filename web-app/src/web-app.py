@@ -5,14 +5,14 @@ import streamlit as st
 from pil_utils import *
 from request_api import *
 
+st.set_page_config(page_title='open-set web-app', page_icon=':dog:', initial_sidebar_state='expanded')
 st.write("""
 # Open set classification app
 ## Image classification with open-set image filtering.
 **by Andrew Wang**
 Open-set classification is critical for letting image classifiers work in the real world. Source: https://github.com/Andrewwango/open-set-resnet
 
-Use the machine learning API directly here: http://open-set-resnet-api.herokuapp.com/ 
-
+**Use the machine learning API directly here:** http://open-set-resnet-api.herokuapp.com/docs 
 """)
 
 file = None
@@ -38,10 +38,10 @@ if file is None:
 else:
     st.sidebar.write("## Results")
     image = pil_open_image(file)
-    with st.sidebar.columns(2)[0]:
-        st.image(image, use_column_width=True)
+#    with st.sidebar.columns(2)[0]:
+    st.sidebar.image(image, use_column_width='never')
 
-    with st.spinner('Wait for it...'):
+    with st.spinner('Classification in progress...'):
         results = post_image_for_inference(bytes=pil_to_bytes(image), 
                                     model=str(model), 
                                     open_set=open_set)
@@ -52,7 +52,9 @@ else:
     #diagrams = split_diagram(get_diagram(model_name=model, open_set=open_set))
     diagram = get_diagram(pred, int(results["level"]), model_name=model, open_set=open_set)
 
-    st.sidebar.image(diagram, use_column_width=True)
+    st.sidebar.image(diagram, use_column_width='auto')
+    st.info("<<< View results in left sidebar!")
+
 
 st.write("""
 ## Introduction
