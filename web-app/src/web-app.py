@@ -13,24 +13,19 @@ st.write("Classification of Mercedes models with open-set image filtering.")
 options = get_model_options()
 
 paths = get_sample_images()
-class File:
-    file = None
-
-def int_gen():
-    a=-1
-    while 1: a+=1; yield a
-
-col1,col2,col3,col4,col5,col6=st.columns(6)
-g = int_gen()
-def change_file(p):
-    print("Changing to ", p)
-    File.file = p
-    print("Changed to ", File.file)
 
 
-with col1:
-    i=next(g); st.image(paths[i], use_column_width=True)
-    st.button("Use", key=str(i), on_click=lambda:change_file(paths[i]))
+#col1,col2,col3,col4,col5,col6=st.columns(6)
+#g = int_gen()
+#def change_file(p):
+#    print("Changing to ", p)
+#    File.file = p
+#    print("Changed to ", File.file)
+file = None
+
+#with col1:
+#    i=next(g); st.image(paths[i], use_column_width=True)
+#    st.button("Use", key=str(i), on_click=lambda:change_file(paths[i]))
 
 #with col2: i=next(g); st.image(paths[i], use_column_width=True); file = paths[i] if st.button("Use", key=str(i)) else file
 #with col3: i=next(g); st.image(paths[i], use_column_width=True); file = paths[i] if st.button("Use", key=str(i)) else file
@@ -41,8 +36,8 @@ with col1:
 
 col1, col2 = st.columns(2)
 with col1:
-    print("Checking col", File.file)
-    File.file = File.file if File.file is not None else st.file_uploader("Please upload an image file", type=["jpg", "png"])
+    print("Checking col", file)
+    file = file if file is not None else st.file_uploader("Please upload an image file", type=["jpg", "png"])
 with col2:
     model = st.selectbox(label="Select model", options=options)
     classif = st.select_slider(label="Open set or closed set", options=["Open-set", "Closed-set"])
@@ -50,14 +45,14 @@ with col2:
 
 with open(full_path("image_path.txt"), 'r') as f:
     p = f.read()
-    File.file = p if p!="" else None
+    file = p if p!="" else None
 
-if File.file is None:
-    print("file is None", File.file)
+if file is None:
+    print("file is None", file)
     st.sidebar.text(" ")
 else:
-    print("file is", File.file)
-    image = pil_open_image(File.file)
+    print("file is", file)
+    image = pil_open_image(file)
     col1,_ = st.sidebar.columns(2)
     with col1:
         st.image(image, use_column_width=True)
