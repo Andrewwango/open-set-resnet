@@ -38,8 +38,8 @@ if file is None:
 else:
     st.sidebar.write("## Results")
     image = pil_open_image(file)
-#    with st.sidebar.columns(2)[0]:
-    st.sidebar.image(image, use_column_width='never')
+    with st.sidebar.columns(2)[0]:
+        st.sidebar.image(image, use_column_width='auto')
 
     with st.spinner('Classification in progress...'):
         results = post_image_for_inference(bytes=pil_to_bytes(image), 
