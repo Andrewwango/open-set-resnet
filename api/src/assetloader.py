@@ -15,6 +15,7 @@ with open(_full_path("classification.config")) as f:
 def download_from_drive(id, dest):
     print("Downloading to", str(dest))
     gdown.download('https://drive.google.com/uc?id='+str(id), dest, quiet=False)
+    print("Downloaded to", dest)
 
 def get_model_names():
     return list(data["MODELS"].keys())
@@ -33,6 +34,7 @@ def get_species_model(store=None, model_name=None):
         path = _full_path(_get_model(model_name)["LOCAL_MODELS"]["LOCAL_SPECIES_MODEL"])
         if not os.path.exists(path):
             download_from_drive(_get_model(model_name)["DRIVE_MODELS"]["DRIVE_SPECIES_MODEL"], path)
+        print("Taking species path", path)
         return path 
 
 def get_breeds_model(store=None, model_name=None):
@@ -42,6 +44,7 @@ def get_breeds_model(store=None, model_name=None):
         path = _full_path(_get_model(model_name)["LOCAL_MODELS"]["LOCAL_BREEDS_MODEL"])
         if not os.path.exists(path):
             download_from_drive(_get_model(model_name)["DRIVE_MODELS"]["DRIVE_BREEDS_MODEL"], path)
+        print("Taking breeds path", path)
         return path 
 
 def get_bucket_name(store=None, model_name=None):
