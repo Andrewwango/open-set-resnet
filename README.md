@@ -1,7 +1,12 @@
 # Open set classification
-Open-set classification is critical for letting image classifiers work in the real world.
+Open-set classification is critical for letting image classifiers work in the real world. Source: https://github.com/Andrewwango/open-set-resnet
 
-## Getting started
+## Web app
+Try me out here: http://open-set-resnet-web-app.herokuapp.com/
+
+The API is available here: http://open-set-resnet-api.herokuapp.com/ 
+
+## Getting started locally
 1.
         git clone https://github.com/Andrewwango/open-set-resnet.git
         cd open-set-resnet
@@ -12,7 +17,8 @@ Open-set classification is critical for letting image classifiers work in the re
 **OR**
 3. Query the API using Swagger UI at `http://localhost:8000/docs`
 **OR**
-3. Call the inference function in Python (see ![python/demo.ipynb](demo))
+3. Call the inference function in Python (see ![demo](python/demo.ipynb))
+
         from api import open_set_inference as osi 
         osi.classify_open_set(image='test-images/animal.jpg')
 
@@ -36,9 +42,9 @@ This is the equivalent of first asking a friend what a car is, then asking a fri
 The open-set inference is developed as an API using FastAPI and uvicorn. This can be accessed using `requests.post`. The web-app uses Streamlit and allows you to upload an image and obtain a prediction.
 
 ## Training
-Model training can be done in the ![training](training folder). To create a different open-set classifier, two models are needed:
+Model training can be done in the ![training folder](training). To create a different open-set classifier, two models are needed:
 1. Your original closed-set classifier.
-2. Train another model with all the closed-set classes in one class, and images of different species but same thing in the other (e.g. non-Mercedes cars, or non-cow animals). For example, the non-Mercedes dataset used the [Stanford](http://ai.stanford.edu/~jkrause/cars/car_dataset.html ) car dataset. To balance the sets, an augmentation script is provided ![augmentation-notebooks/augment_oversampling.ipynb](augment_oversampling.ipynb). The augmentation performs a random rotation, a LR flipping, a random noise operation, Gaussian blur, a shear affine transformation and a contrast adjustment to produce 7 copies of the original image.
+2. Train another model with all the closed-set classes in one class, and images of different species but same thing in the other (e.g. non-Mercedes cars, or non-cow animals). For example, the non-Mercedes dataset used the [Stanford](http://ai.stanford.edu/~jkrause/cars/car_dataset.html ) car dataset. To balance the sets, an augmentation script is provided ![augment_oversampling.ipynb](augmentation-notebooks/augment_oversampling.ipynb). The augmentation performs a random rotation, a LR flipping, a random noise operation, Gaussian blur, a shear affine transformation and a contrast adjustment to produce 7 copies of the original image.
 
 To set up another model,
 1. Put images in training folder
