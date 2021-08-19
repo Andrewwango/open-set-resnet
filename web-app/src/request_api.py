@@ -1,8 +1,10 @@
 import requests
 
-API_URL = 'http://localhost:8000/prediction/'
-LIST_URL = 'http://localhost:8000/list_model_names/'
-STATIC_TEXT_URL = 'http://localhost:8000/static_text/'
+HOSTNAME = 'http://open-set-resnet-api.herokuapp.com'#'http://localhost:8000'
+
+API_URL = HOSTNAME + '/prediction/'
+LIST_URL = HOSTNAME + '/list_model_names/'
+STATIC_TEXT_URL = HOSTNAME + '/static_text/'
 
 def get_model_options():
     return requests.get(LIST_URL).json()["model_names"]
