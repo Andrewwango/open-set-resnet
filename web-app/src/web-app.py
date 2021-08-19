@@ -9,52 +9,31 @@ st.write("""
 # Open set classification app
 """)
 st.write("Classification of Mercedes models with open-set image filtering.")
+st.write("by Andrew Wang")
 
-options = get_model_options()
-
-paths = get_sample_images()
-
-
-#col1,col2,col3,col4,col5,col6=st.columns(6)
-#g = int_gen()
-#def change_file(p):
-#    print("Changing to ", p)
-#    File.file = p
-#    print("Changed to ", File.file)
 file = None
 
-#with col1:
-#    i=next(g); st.image(paths[i], use_column_width=True)
-#    st.button("Use", key=str(i), on_click=lambda:change_file(paths[i]))
-
-#with col2: i=next(g); st.image(paths[i], use_column_width=True); file = paths[i] if st.button("Use", key=str(i)) else file
-#with col3: i=next(g); st.image(paths[i], use_column_width=True); file = paths[i] if st.button("Use", key=str(i)) else file
-#with col4: i=next(g); st.image(paths[i], use_column_width=True); file = paths[i] if st.button("Use", key=str(i)) else file
-#with col5: i=next(g); st.image(paths[i], use_column_width=True); file = paths[i] if st.button("Use", key=str(i)) else file
-#with col6: i=next(g); st.image(paths[i], use_column_width=True); file = paths[i] if st.button("Use", key=str(i)) else file
-
-
-col1, col2 = st.columns(2)
-with col1:
-    print("Checking col", file)
+file_cols = st.columns(2)
+with file_cols[0]:
     file = file if file is not None else st.file_uploader("Please upload an image file", type=["jpg", "png"])
-with col2:
-    model = st.selectbox(label="Select model", options=options)
+with file_cols[1]:
+    paths,path_to_name = get_sample_images()
+    path = st.selectbox(label="Or select an image...", options=paths, format_func=path_to_name)
+    if st.button("Choose"):
+        file = path
+
+param_cols = st.columns(2)
+with param_cols[0]:
+    model = st.selectbox(label="Select model", options=get_model_options())
+with param_cols[1]:
     classif = st.select_slider(label="Open set or closed set", options=["Open-set", "Closed-set"])
     open_set = classif=='Open-set'
 
-with open(full_path("image_path.txt"), 'r') as f:
-    p = f.read()
-    file = p if p!="" else None
-
 if file is None:
-    print("file is None", file)
     st.sidebar.text(" ")
 else:
-    print("file is", file)
     image = pil_open_image(file)
-    col1,_ = st.sidebar.columns(2)
-    with col1:
+    with st.sidebar.columns(2)[0]:
         st.image(image, use_column_width=True)
 
     with st.spinner('Wait for it...'):
@@ -69,6 +48,3 @@ else:
     diagram = get_diagram(pred, int(results["level"]), model_name=model, open_set=open_set)
 
     st.sidebar.image(diagram, use_column_width=True)
-
-
-

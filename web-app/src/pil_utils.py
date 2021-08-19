@@ -10,7 +10,8 @@ font = ImageFont.truetype(full_path(os.path.join("assets", "IBMPlexSans-Regular.
 
 def get_sample_images():
     images = full_path("assets", "sample")
-    return [pil_open_image(full_path(images, image)) for image in os.listdir(images)]
+    all_paths = os.listdir(images)
+    return [full_path(images, image) for image in all_paths], lambda x:os.path.splitext(os.path.basename(x))[0]
 
 def pil_open_image(path):
     return Image.open(path)

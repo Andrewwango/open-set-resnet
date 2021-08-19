@@ -55,6 +55,5 @@ The literature proposes methods which involve replacing the final SoftMax layer 
 - Improving inference time of mercedes cars, as they must go through 3 models for a prediction.
 
 ### TODO:
-- Deployment to Heroku
 - Suggestions for images on webapp
 - docs
