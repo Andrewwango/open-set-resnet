@@ -6,6 +6,8 @@ Try me out here: http://open-set-resnet-web-app.herokuapp.com/
 
 The API is available here: http://open-set-resnet-api.herokuapp.com/ 
 
+![](web-app/src/assets/diagram.bmp)
+
 ## Getting started locally
 1.
         git clone https://github.com/Andrewwango/open-set-resnet.git
