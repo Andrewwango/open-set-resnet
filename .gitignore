@@ -1,6 +1,8 @@
 api/test-set/
 training/training_data/
 **/model.pth
+web-app/src/assets/display.bmp
+web-app/src/assets/display_template.bmp
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
