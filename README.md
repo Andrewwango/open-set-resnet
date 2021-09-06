@@ -2,9 +2,9 @@
 Open-set classification is critical for letting image classifiers work in the real world. Source: https://github.com/Andrewwango/open-set-resnet
 
 ## Web app
-Try me out here: http://open-set-resnet-web-app.herokuapp.com/
+Try me out here: https://open-set-resnet-web-app.herokuapp.com/
 
-The API is available here: http://open-set-resnet-api.herokuapp.com/ 
+The API is available here: https://open-set-resnet-api.herokuapp.com/ 
 
 ![](web-app/src/assets/display_sm.jpg)
 
