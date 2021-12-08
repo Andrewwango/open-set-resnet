@@ -1,13 +1,10 @@
 pydantic==1.8.2
-torchvision==0.8.2+cpu
 requests==2.25.1
 numpy==1.19.5
-torch==1.7.1+cpu
-matplotlib==3.3.3
-boto3==1.18.19
 fastapi==0.68.0
 Pillow==8.3.1
 scikit_learn==0.24.2
-uvicorn==0.14.0
 tqdm==4.59.0
 python-multipart==0.0.5
+https://download.pytorch.org/whl/cpu/torch-1.7.1%2Bcpu-cp38-cp38-linux_x86_64.whl
+https://download.pytorch.org/whl/cpu/torchvision-0.8.2%2Bcpu-cp38-cp38-linux_x86_64.whl
