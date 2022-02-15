@@ -2,7 +2,7 @@
 Open-set classification is critical for letting image classifiers work in the real world. Source: https://github.com/Andrewwango/open-set-resnet
 
 ## Web app
-Try me out here: https://share.streamlit.io/andrewwango/open-set-resnet/web-app/src/web-app.py
+Try me out here on Streamlit: https://andrewwango.github.io/open-set-resnet-web-app
 
 The API is available here: https://open-set-resnet-api.herokuapp.com/ 
 
