@@ -48,9 +48,9 @@ This is the equivalent of first asking a friend what a car is, then asking a fri
 The open-set inference is developed as an API using FastAPI and uvicorn. This can be accessed using `requests.post`. You can test out different models on the Streamlit web-app. We deploy this repo as 2 separate apps on Heroku.
 
 ## Training
-Model training can be done in the ![training folder](training). To create a different open-set classifier, two models are needed:
+Model training can be done in the [training folder](training). To create a different open-set classifier, two models are needed:
 1. Your original closed-set classifier.
-2. Train another model with all the closed-set classes in one class, and images of different species but same thing in the other (e.g. non-Mercedes cars, or non-cow animals). To balance the sets, an augmentation script is provided ![augment_oversampling.ipynb](augmentation-notebooks/augment_oversampling.ipynb). The augmentation performs a random rotation, a LR flipping, a random noise operation, Gaussian blur, a shear affine transformation and a contrast adjustment to produce 7 copies of the original image.
+2. Train another model with all the closed-set classes in one class, and images of different species but same thing in the other (e.g. non-Mercedes cars, or non-cow animals). To balance the sets, an augmentation script is provided [augment_oversampling.ipynb](augmentation-notebooks/augment_oversampling.ipynb). The augmentation performs a random rotation, a LR flipping, a random noise operation, Gaussian blur, a shear affine transformation and a contrast adjustment to produce 7 copies of the original image.
 
 To set up another model,
 1. Put images in training folder/AWS S3 bucket.
