@@ -25,7 +25,11 @@ The API is available here: https://open-set-resnet-api.herokuapp.com/
         osi.classify_open_set(image='test-images/animal.jpg')
 
 ## Introduction
-Currently, a normal image classifier will assign a random image a category despite it not belonging to any specific category. These closed-set classifiers often do this with high confidence. An open-set classifier should detect images that do not belong in any of the classes. For example, a spaniels classifier should filter images of non-dogs and of non-spaniels; a car-model classifier should filter images of other makes or non-cars. 
+A standard image classifier will assign a random image a category despite it not belonging to any specific category. These closed-set classifiers often do this with high confidence. An open-set classifier should detect images that do not belong in any of the classes. For example, a spaniels classifier should filter images of non-dogs and of non-spaniels; a car-model classifier should filter images of other makes or non-cars. 
+
+Previous simple approaches include:
+- Including out-of-distribution images in the training set and labelling them as "Other". Problem: this requires extensive coverage of potential "Other" images without imbalancing the datasets.
+- Lump together all training images and pre-classify against a "outside world" image set. Problem: this also requires extensive coverage of potential "Other" images, as well as encountering the generality vs specificity dilemma: we need to filter out both specific non-spaniel dogs and random other objects such as cars.
 
 This repo contains an example classifier which takes a spaniel/dog/Mercedes model classifier and adds open-set filtering capabilities. The classifier structure is as follows:
 
@@ -55,12 +59,12 @@ To set up another model,
 4. Add classifier to `api/src/classification.config` including model locations and label names.
 
 ## Datasets
-Cars: [Stanford](http://ai.stanford.edu/~jkrause/cars/car_dataset.html )
-Dogs: [Kaggle](https://www.kaggle.com/gpiosenka/70-dog-breedsimage-data-set)
+- Cars: [Stanford](http://ai.stanford.edu/~jkrause/cars/car_dataset.html )
+- Dogs: [Kaggle](https://www.kaggle.com/gpiosenka/70-dog-breedsimage-data-set)
 
 ## Literature
-Problem statement and possible solutions: https://towardsdatascience.com/does-a-neural-network-know-what-it-doesnt-know-c2b4517896d7
-The literature proposes methods which involve replacing the final SoftMax layer with a new layer (https://arxiv.org/abs/1511.06233), or changing the loss function to maximise distance between known classes and the unknown (https://arxiv.org/pdf/1811.04110v2.pdf, https://arxiv.org/pdf/1802.04365.pdf).
+- Problem statement and possible practical solutions [here](https://towardsdatascience.com/does-a-neural-network-know-what-it-doesnt-know-c2b4517896d7)
+- The literature also proposes methods which involve replacing the final SoftMax layer with a new layer e.g. [here](https://arxiv.org/abs/1511.06233), or changing the loss function to maximise distance between known classes and the unknown e.g. [here](https://arxiv.org/pdf/1811.04110v2.pdf) or [here](https://arxiv.org/pdf/1802.04365.pdf). These solutions are risky as they will probably impact the performance of the original closed-set classifier, which is undesirable.
 
 ## Further work
 - Tuning the mercedes-non-mercedes model to improve the acceptance of mercedes at the cost of rejecting non-mercedes (reducing type II errors at the cost of accepting more type I errors).
