@@ -1,8 +1,5 @@
 # Open set classification
-Open-set classification is critical for letting image classifiers work in the real world. Source: https://github.com/Andrewwango/open-set-resnet
-
-## Web app
-Try me out here on Streamlit: https://andrewwango.github.io/open-set-resnet-web-app
+Open-set classification is critical for letting image classifiers work in the real world. Try me out [here on Streamlit]( https://andrewwango.github.io/open-set-resnet-web-app)
 
 The API is available here: https://open-set-resnet-api.herokuapp.com/ 
 
