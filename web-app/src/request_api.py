@@ -1,7 +1,7 @@
 import requests
 
-HOSTNAME = 'http://open-set-resnet-api.herokuapp.com'
-#HOSTNAME = 'http://localhost:8000'
+#HOSTNAME = 'http://open-set-resnet-api.herokuapp.com'
+HOSTNAME = 'http://localhost:8000'
 
 API_URL = HOSTNAME + '/prediction/'
 LIST_URL = HOSTNAME + '/list_model_names/'

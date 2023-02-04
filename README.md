@@ -1,7 +1,5 @@
 # Open set classification
-Open-set classification is critical for letting image classifiers work in the real world. Try me out [here on Streamlit]( https://andrewwango.github.io/open-set-resnet-web-app)
-
-The API is available here: https://open-set-resnet-api.herokuapp.com/ 
+Open-set classification is critical for letting image classifiers work in the real world. 
 
 ![](web-app/src/assets/display_sm.jpg)
 
@@ -10,7 +8,6 @@ The API is available here: https://open-set-resnet-api.herokuapp.com/
         git clone https://github.com/Andrewwango/open-set-resnet.git
         cd open-set-resnet
         pip install -r requirements.txt
-        cd python
 2. Start API: `uvicorn api.src.main:app --reload`
 3. Start Web app: `streamlit run web-app/src/web-app.py`
 **OR**
@@ -20,6 +17,8 @@ The API is available here: https://open-set-resnet-api.herokuapp.com/
 
         from api import open_set_inference as osi 
         osi.classify_open_set(image='test-images/animal.jpg')
+
+The UI is no longer available [here on Streamlit]( https://andrewwango.github.io/open-set-resnet-web-app), because the API is no longer available on [Heroku](https://open-set-resnet-api.herokuapp.com/).
 
 ## Introduction
 A standard image classifier will assign a random image a category despite it not belonging to any specific category. These closed-set classifiers often do this with high confidence. An open-set classifier should detect images that do not belong in any of the classes. For example, a spaniels classifier should filter images of non-dogs and of non-spaniels; a car-model classifier should filter images of other makes or non-cars. 
