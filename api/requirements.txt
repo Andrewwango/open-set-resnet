@@ -7,6 +7,7 @@ Pillow==8.3.1
 scikit_learn==0.24.2
 tqdm==4.59.0
 python-multipart==0.0.5
-torch
-torchvision 
 uvicorn==0.14.0
+
+https://download.pytorch.org/whl/cpu/torch-1.9.1%2Bcpu-cp38-cp38-linux_x86_64.whl
+https://download.pytorch.org/whl/cpu/torchvision-0.9.1%2Bcpu-cp38-cp38-linux_x86_64.whl
