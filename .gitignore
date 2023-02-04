@@ -4,6 +4,8 @@ training/training_data/
 web-app/src/assets/display.bmp
 web-app/src/assets/display_template.bmp
 
+.DS_Store
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
